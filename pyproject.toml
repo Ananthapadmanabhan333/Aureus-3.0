@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aureus-rv"
+version = "3.0.0"
+description = "AUREUS-RV 3.0 — Lifecycle-aware MCX gold futures relative-value research instrument by Global Focus Innovators"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "Global Focus Innovators" }
+]
+dependencies = [
+    "pandas>=2.2.0",
+    "numpy>=1.26.0",
+    "scipy>=1.12.0",
+    "statsmodels>=0.14.1",
+    "pydantic>=2.6.0",
+    "duckdb>=0.10.0",
+    "pyarrow>=15.0.0",
+    "pyyaml>=6.0.1",
+    "streamlit>=1.32.0",
+    "plotly>=5.20.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.3.0",
+]
+
+[project.scripts]
+aureus-generate-demo = "aureus_rv.cli:main_generate_demo"
+aureus-validate = "aureus_rv.cli:main_validate"
+aureus-research = "aureus_rv.cli:main_research"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aureus_rv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.3.0",
+]
+

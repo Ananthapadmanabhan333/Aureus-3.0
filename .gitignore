@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+
+# Environment variables
+.env
+
+# Runtime outputs & databases (except tracked demo fixtures if desired)
+artifacts/
+*.duckdb
+*.duckdb.wal
